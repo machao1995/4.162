@@ -1,0 +1,7 @@
+<form action="/person/" method="post">
+    {% csrf_token %}
+    {% for i in obj %}
+    <div>{{ i.name }} {{ i }} {{ i.errors }} </div>
+    {% endfor %}
+    <input type="submit" value="提交">
+</form>b

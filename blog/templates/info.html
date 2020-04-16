@@ -1,0 +1,12 @@
+<form action="/person/"  method="post">
+    {% csrf_token %}
+{#    # django自带的csrf验证，不加提交时会报错#}
+    {{ obj }}
+{#    # views传的对象， 可以自动创建html标签#}
+{#    <div>姓名：{{ obj.name }}</div>    #}
+{#    # 也可以单独取对象中的某一个字段#}
+    <!--<div>生日：{{ obj.birthday }}</div>-->
+    <!--<div>邮箱：{{ obj.email }}</div>-->
+    <!--<div>手机号：{{ obj.phone}}</div>-->
+    <input type="submit" value="注册">
+</form>

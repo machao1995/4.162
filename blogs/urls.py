@@ -15,13 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from blog.views import index, persondetail,person
+from blog.views import index, persondetail,person,ajax,test
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', index),
     url(r'^persondetail/', persondetail),
 url(r'^person/', person),
+url(r'^ajax/',ajax),
+url(r'^test/',test),
+
 
 
 

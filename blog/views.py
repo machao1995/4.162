@@ -1,3 +1,5 @@
+from django.contrib.auth import authenticate
+from django.http import JsonResponse
 from django.shortcuts import render
 # import blog.models
 import markdown
@@ -101,6 +103,18 @@ def person(request):
             Blog.is_active = 0
             Blog.save()
 
+            name = request.POST['name']
+            birthday = request.POST['birthday']
+            user = Blog.objects.get(name=name)
+
+            # 验证账号密码是否一致
+            user = authenticate(email=name,birthday=birthday)
+            # result = check_password(password, user.password)
+
+
+
+
+
 
             # if name == 'lily':
             #     return HttpResponse('*lily*')
@@ -113,6 +127,32 @@ def person(request):
     return render(request,'info.html',{'obj':person_obj, 'data':data})  #然后把对象传给html
 
 from .models import Article_Model_Form
+
+
+
+from django.shortcuts import render,HttpResponse
+import json
+
+def test(request):
+    return render(request,'ajax.html')
+
+def ajax(request):
+    if request.method=="POST":
+        name=request.POST.get('name')
+        print("ok")
+        print(name)
+
+        status=1
+        result="sucuss"
+        return HttpResponse(json.dumps({
+            "status":status,
+            "result":result,
+            "name":name
+        }),content_type='application/json')
+        # return HttpResponse( status)
+
+
+
 
 
 

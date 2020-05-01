@@ -1,17 +1,16 @@
-from django.contrib.auth import authenticate
-from django.http import JsonResponse
-from django.shortcuts import render
 # import blog.models
 import markdown
+from django.contrib.auth import authenticate
+
 # Create your views here.
 from . import models
 
 
 def index(request):
     Blog = models.Blog()
-    blog=models.Blog.objects.all().first()
-    blog_content=markdown.markdown(blog.content)
-    return render(request,"blog.html",{'blog':blog,"blog_content":blog_content})
+    blog = models.Blog.objects.all().first()
+    blog_content = markdown.markdown(blog.content)
+    return render(request, "blog.html", {'blog': blog, "blog_content": blog_content})
 def persondetail(request):
     Blog = models.Blog()
     blog=models.Blog.objects.all().first()
@@ -21,7 +20,6 @@ def persondetail(request):
         blog.content})
 
 
-from django.shortcuts import render,HttpResponse
 from .forms import Person_Info  #导入form表单
 
 
@@ -61,7 +59,6 @@ from .forms import Person_Info  #导入form表单
 #
 #     return render(request,'info.html',{'obj':person_obj})  #然后把对象传给html
 
-from .models import Article_Model_Form
 def article_modelform(request):
     # form = Article_Model_Form()  #创建一个表单来添加一条数据
     if request.method == 'POST':
@@ -127,9 +124,6 @@ def person(request):
     return render(request,'info.html',{'obj':person_obj, 'data':data})  #然后把对象传给html
 
 from .models import Article_Model_Form
-
-
-
 from django.shortcuts import render,HttpResponse
 import json
 
